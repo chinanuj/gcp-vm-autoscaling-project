@@ -1,0 +1,45 @@
+---
+resources:
+- name: allow-ssh
+  type: compute.v1.firewall
+  properties:
+    network: default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges:
+    - YOUR_IP_ADDRESS/32  # Replace with your actual IP
+    allowed:
+    - IPProtocol: tcp
+      ports:
+      - '22'
+    targetTags:
+    - http-server
+    - https-server
+
+- name: allow-web
+  type: compute.v1.firewall
+  properties:
+    network: default
+    priority: 1100
+    direction: INGRESS
+    sourceRanges:
+    - 0.0.0.0/0
+    allowed:
+    - IPProtocol: tcp
+      ports:
+      - '80'
+      - '443'
+    targetTags:
+    - http-server
+    - https-server
+
+- name: deny-all-ingress
+  type: compute.v1.firewall
+  properties:
+    network: default
+    priority: 2000
+    direction: INGRESS
+    sourceRanges:
+    - 0.0.0.0/0
+    denied:
+    - IPProtocol: all

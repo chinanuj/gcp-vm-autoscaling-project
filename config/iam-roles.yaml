@@ -1,0 +1,19 @@
+---
+resources:
+- name: vm-manager-service-account
+  type: iam.v1.serviceAccount
+  properties:
+    accountId: vm-manager
+    displayName: VM Manager Service Account
+
+- name: vm-manager-iam-policy
+  type: iam.v1.iamPolicy
+  properties:
+    resource: $(ref.vm-manager-service-account.name)
+    bindings:
+    - role: roles/compute.instanceAdmin.v1
+      members:
+      - serviceAccount:$(ref.vm-manager-service-account.email)
+    - role: roles/compute.networkUser
+      members:
+      - serviceAccount:$(ref.vm-manager-service-account.email)
