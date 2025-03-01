@@ -1,45 +1,26 @@
----
 resources:
-- name: allow-ssh
+- name: allow-http-custom
   type: compute.v1.firewall
   properties:
-    network: default
+    description: "Allow HTTP traffic from allowed IP range"
+    network: global/networks/default
     priority: 1000
-    direction: INGRESS
     sourceRanges:
-    - YOUR_IP_ADDRESS/32  # Replace with your actual IP
+      - 223.238.204.234/32
     allowed:
-    - IPProtocol: tcp
-      ports:
-      - '22'
-    targetTags:
-    - http-server
-    - https-server
+      - IPProtocol: tcp
+        ports:
+          - "80"
 
-- name: allow-web
+- name: allow-https-custom
   type: compute.v1.firewall
   properties:
-    network: default
-    priority: 1100
-    direction: INGRESS
+    description: "Allow HTTPS traffic from allowed IP range"
+    network: global/networks/default
+    priority: 1000
     sourceRanges:
-    - 0.0.0.0/0
+      - 223.238.204.234/32
     allowed:
-    - IPProtocol: tcp
-      ports:
-      - '80'
-      - '443'
-    targetTags:
-    - http-server
-    - https-server
-
-- name: deny-all-ingress
-  type: compute.v1.firewall
-  properties:
-    network: default
-    priority: 2000
-    direction: INGRESS
-    sourceRanges:
-    - 0.0.0.0/0
-    denied:
-    - IPProtocol: all
+      - IPProtocol: tcp
+        ports:
+          - "443"

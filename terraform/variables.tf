@@ -1,21 +1,22 @@
-variable "project_id" {
-  description = "The ID of the GCP project"
+variable "project" {
+  description = "GCP project ID"
   type        = string
 }
 
 variable "region" {
-  description = "The GCP region to deploy resources"
+  description = "GCP region"
   type        = string
   default     = "us-central1"
 }
 
 variable "zone" {
-  description = "The GCP zone to deploy resources"
+  description = "GCP zone"
   type        = string
   default     = "us-central1-a"
 }
 
-variable "your_ip_address" {
-  description = "Your IP address for SSH access (format: x.x.x.x/32)"
+variable "allowed_ip" {
+  description = "IP address allowed to access HTTP/HTTPS services"
   type        = string
+  default     = "223.238.204.234/32"
 }

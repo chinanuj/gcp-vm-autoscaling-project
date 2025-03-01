@@ -1,19 +1,7 @@
----
 resources:
-- name: vm-manager-service-account
-  type: iam.v1.serviceAccount
+- name: add-iam-policy-binding
+  type: gcp-types/cloudresourcemanager-v1:virtual.projects.iamMemberBinding
   properties:
-    accountId: vm-manager
-    displayName: VM Manager Service Account
-
-- name: vm-manager-iam-policy
-  type: iam.v1.iamPolicy
-  properties:
-    resource: $(ref.vm-manager-service-account.name)
-    bindings:
-    - role: roles/compute.instanceAdmin.v1
-      members:
-      - serviceAccount:$(ref.vm-manager-service-account.email)
-    - role: roles/compute.networkUser
-      members:
-      - serviceAccount:$(ref.vm-manager-service-account.email)
+    resource: projects/your-project-id
+    role: roles/compute.viewer
+    member: user:user@example.com

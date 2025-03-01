@@ -19,8 +19,6 @@ The repository contains:
 assignment-2-gcp/
 ├── README.md                  # This file (complete documentation)
 ├── report.pdf                 # Detailed project report (design, implementation, testing)
-├── diagrams/
-│   └── architecture_diagram.png  # Architecture diagram of the setup
 ├── scripts/
 │   ├── create_vm.sh             # Create a single VM instance with Apache installed
 │   ├── create_instance_template.sh  # Create an instance template for auto-scaling
@@ -31,6 +29,9 @@ assignment-2-gcp/
 ├── testing/
 │   ├── nmap_test.sh             # Test port access using nmap
 │   └── curl_test.sh             # Test HTTP response using curl
+├── config/
+│   ├── firewall-rules.yaml      # Deployment Manager config for custom firewall rules
+│   └── iam-role.yaml            # Deployment Manager config for IAM policy bindings
 └── terraform/                   # Optional Terraform configuration
     ├── main.tf
     ├── variables.tf
@@ -193,9 +194,6 @@ If you prefer to deploy using Terraform:
    ```
    Confirm the changes when prompted. This deploys an instance template and a region-based Managed Instance Group with auto-scaling settings.
 
-
-**Architecture Diagram:**
-The diagram file is located in diagrams/architecture_diagram.png.
 
 ## Conclusion
 

@@ -7,7 +7,17 @@
 # Local environment files
 .env
 .vscode/
+.idea/
 
 # OS generated files
 .DS_Store
 Thumbs.db
+
+
+credentials.json
+*.pem
+*.key
+
+
+*.log
+*.tmp
