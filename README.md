@@ -92,9 +92,9 @@ This script creates a VM instance (named assignment-2-gcp-vm) in the specified z
    ```
 
 The script creates a MIG using the instance template and configures auto-scaling with the following parameters:
-- Target CPU Utilization: 60%
+- Target CPU Utilization: 70%
 - Min Instances: 1
-- Max Instances: 5
+- Max Instances: 3
 - Cooldown Period: 60 seconds
 
 ### 3. Configure Security Measures
